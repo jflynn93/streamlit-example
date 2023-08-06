@@ -14,8 +14,8 @@ my_environ = st.secrets["my_environ"]
 embed_model = "text-embedding-ada-002"
 # initialize connection to pinecone 
 pinecone.init(
-    api_key='pinecone_api_key',
-    environment='my_environ' # may be different, check at app.pinecone.io
+    api_key=pinecone_api_key,
+    environment=my_environ # may be different, check at app.pinecone.io
 )
 #  Send to pinecone 
 index = pinecone.Index('index_name')
