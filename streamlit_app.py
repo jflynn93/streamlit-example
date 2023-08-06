@@ -22,7 +22,6 @@ index = pinecone.Index(index_name)
 
  # first let's make it simpler to get answers
    def complete(prompt):
-       # query text-davinci-003
        res = openai.Completion.create(
            engine='text-davinci-003',
            prompt=prompt,
@@ -78,14 +77,11 @@ index = pinecone.Index(index_name)
     
 # radio buttomn 
 if st.button("Search"):
-   # get user input 
-   query = st.text_input("What do you want to know?")  
-   query_with_contexts = retrieve_base(query)
-   answer = complete(query_with_contexts)
-   
-   # Write query answer
-   st.markdown("### Answer:")
-   st.write(response.choices[0]['message']['content'])
+    query = st.text_input("What do you want to know?")  
+    query_with_contexts = retrieve_base(query)
+    answer = complete(query_with_contexts)
+    st.markdown("### Answer:")
+    st.write(response.choices[0]['message']['content'])
       
 
  
