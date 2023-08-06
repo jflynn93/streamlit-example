@@ -1,4 +1,7 @@
-openai==0.25.0
+openai==0.25.*
 streamlit
 altair
 pandas
+time
+pinecone
+
