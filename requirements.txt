@@ -2,5 +2,5 @@ openai==0.27.*
 streamlit
 altair
 pandas
-pinecone
+pinecone-client
 
