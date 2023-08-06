@@ -20,6 +20,9 @@ pinecone.init(
 #  Send to pinecone 
 index = pinecone.Index(index_name)
 
+query = st.text_input("What do you want to know?")  
+
+
  # first let's make it simpler to get answers
 def complete(prompt):
     res = openai.Completion.create(
@@ -78,7 +81,6 @@ def retrieve_base(query):
 # radio buttomn 
     
 if st.button("Search"):
-    query = st.text_input("What do you want to know?")  
     query_with_contexts = retrieve_base(query)
     answer = complete(query_with_contexts)
     st.markdown("### Answer:")
