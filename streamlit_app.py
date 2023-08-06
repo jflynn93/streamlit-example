@@ -1,6 +1,8 @@
 #import tensorflow as tf
 import openai
+import pinecone
 import streamlit as st
+from time import sleep
 
 st.title("Budd-E")
 
@@ -11,11 +13,10 @@ query = st.text_input("What do you want to know?")
 if st.button("Search"):
    
    
-from time import sleep
+
 #from datasets import load_dataset
 #from tqdm.auto import tqdm
-import openai
-import pinecone
+
 #from PyPDF2 import PdfReader
 
  
