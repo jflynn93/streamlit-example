@@ -1,5 +1,5 @@
-import tensorflow as tf
-import openai
+#import tensorflow as tf
+#import openai
 import streamlit as st
 
 st.title("ChatGPT-like clone")
