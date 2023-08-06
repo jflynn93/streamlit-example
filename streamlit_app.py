@@ -21,61 +21,62 @@ pinecone.init(
 index = pinecone.Index(index_name)
 
  # first let's make it simpler to get answers
-   def complete(prompt):
-       res = openai.Completion.create(
-           engine='text-davinci-003',
-           prompt=prompt,
-           temperature=0,
-           max_tokens=400,
-           top_p=1,
-           frequency_penalty=0,
-           presence_penalty=0,
-           stop=None
-       )
-       return res['choices'][0]['text'].strip()
+def complete(prompt):
+    res = openai.Completion.create(
+    engine='text-davinci-003',
+        prompt=prompt,
+        temperature=0,
+        max_tokens=400,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0,
+        stop=None
+    )
+    return res['choices'][0]['text'].strip()
 
-    def retrieve_base(query):
-       res = openai.Embedding.create(
-            input=[query],
-           engine=embed_model
-        )
-       # retrieve from Pinecone
-       xq = res['data'][0]['embedding']
+def retrieve_base(query):
+    res = openai.Embedding.create(
+        input=[query],
+        engine=embed_model
+    )
+    # retrieve from Pinecone
+    xq = res['data'][0]['embedding']
+    
+    # get relevant contexts
+    res = index.query(xq, top_k=3, include_metadata=True)
+    contexts = [
+        x['metadata']['text'] for x in res['matches']
+    ]
 
-       # get relevant contexts
-       res = index.query(xq, top_k=3, include_metadata=True)
-       contexts = [
-           x['metadata']['text'] for x in res['matches']
-       ]
-
-       # build our prompt with the retrieved contexts included
-       prompt_start = (
-           "Answer the question based on the context below.\n\n"+
-           "Context:\n"
-       )
-       prompt_end = (
-           f"\n\nQuestion: {query}\nAnswer:"
-       )
+    # build our prompt with the retrieved contexts 
+    prompt_start = (
+        "Answer the question based on the context below.\n\n"+
+        "Context:\n"
+    )
+    prompt_end = (
+        f"\n\nQuestion: {query}\nAnswer:"
+    )
        # append contexts until hitting limit
-       for i in range(0, len(contexts)):
+    for i in range(0, len(contexts)):
        #    print(i)
-           if len("\n\n---\n\n".join(contexts[:i])) >= 3750:
-               prompt = (
-                   prompt_start +
-                   "\n\n---\n\n".join(contexts[:i-1]) +
-                   prompt_end
-               )
-               break
-           elif i == len(contexts)-1:
-               prompt = (
-                   prompt_start +
-                   "\n\n---\n\n".join(contexts) +
-                   prompt_end
-               )
-       return prompt   
+        if len("\n\n---\n\n".join(contexts[:i])) >= 3750:
+            prompt = (
+                prompt_start +
+                "\n\n---\n\n".join(contexts[:i-1]) +
+                prompt_end
+            )
+            break
+        elif i == len(contexts)-1:
+            prompt = (
+                prompt_start +
+                "\n\n---\n\n".join(contexts) +
+                prompt_end
+            )
+    return prompt   
 
     
 # radio buttomn 
+    
 if st.button("Search"):
     query = st.text_input("What do you want to know?")  
     query_with_contexts = retrieve_base(query)
