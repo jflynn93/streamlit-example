@@ -2,7 +2,7 @@
 import openai
 import streamlit as st
 
-st.title("ChatGPT-like clone")
+st.title("Budd-E")
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
