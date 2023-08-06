@@ -1,4 +1,4 @@
 altair
 pandas
 streamlit
-openai
+openai==0.25.0
