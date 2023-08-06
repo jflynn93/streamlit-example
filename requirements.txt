@@ -1,5 +1,9 @@
+python-dotenv
+opeanai
+asyncio
+langchain
+streamlit
 altair
 pandas
 streamlit
 openai
-tensorflow
