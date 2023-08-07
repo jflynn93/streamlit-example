@@ -9,9 +9,14 @@ st.title("Budd-E")
 
 @st.cache_resource
 def start_pinecone():
+      # initialize connection to pinecone 
       pinecone.init(
-          api_key=PINECONE_API_KEY,  # find at app.pinecone.io
-          environment=PINECONE_API_ENV  # next to api key in console)
+          api_key=pinecone_api_key,
+          environment=my_environ # may be different, check at app.pinecone.io
+      )
+      #  Send to pinecone 
+      index = pinecone.Index(index_name)
+
 
           
 # get secret vars
@@ -21,13 +26,6 @@ index_name = st.secrets["index_name"]
 my_environ = st.secrets["my_environ"]
 # set embedding model 
 embed_model = "text-embedding-ada-002"
-# initialize connection to pinecone 
-pinecone.init(
-    api_key=pinecone_api_key,
-    environment=my_environ # may be different, check at app.pinecone.io
-)
-#  Send to pinecone 
-index = pinecone.Index(index_name)
 
 query = st.text_input("What do you want to know?")  
 
