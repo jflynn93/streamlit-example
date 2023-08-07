@@ -14,8 +14,10 @@ def start_pinecone():
           api_key=pinecone_api_key,
           environment=my_environ # may be different, check at app.pinecone.io
       )
-      #  Send to pinecone 
-      index = pinecone.Index(index_name)
+      
+
+#  Send to pinecone 
+index = pinecone.Index(index_name)
 
 
           
