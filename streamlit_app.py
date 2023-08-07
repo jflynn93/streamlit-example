@@ -5,6 +5,16 @@ import streamlit as st
 from time import sleep
 
 st.title("Budd-E")
+# get secret vars
+openai.api_key = st.secrets["OPENAI_API_KEY"]
+pinecone_api_key = st.secrets["pinecone_api_key"]
+index_name = st.secrets["index_name"]
+my_environ = st.secrets["my_environ"]
+# set embedding model 
+embed_model = "text-embedding-ada-002"
+
+query = st.text_input("What do you want to know?")  
+
 
 
 @st.cache_resource
@@ -21,16 +31,6 @@ index = pinecone.Index(index_name)
 
 
           
-# get secret vars
-openai.api_key = st.secrets["OPENAI_API_KEY"]
-pinecone_api_key = st.secrets["pinecone_api_key"]
-index_name = st.secrets["index_name"]
-my_environ = st.secrets["my_environ"]
-# set embedding model 
-embed_model = "text-embedding-ada-002"
-
-query = st.text_input("What do you want to know?")  
-
 
  # first let's make it simpler to get answers
 def complete(prompt):
