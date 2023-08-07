@@ -18,7 +18,7 @@ pinecone.init(
     environment=my_environ # may be different, check at app.pinecone.io
 )
 #  Send to pinecone 
-index = pinecone.Index('index_name')
+index = pinecone.Index(index_name)
 
 query = st.text_input("What do you want to know?")  
 
