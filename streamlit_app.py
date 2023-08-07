@@ -5,6 +5,15 @@ import streamlit as st
 from time import sleep
 
 st.title("Budd-E")
+
+
+@st.cache_resource
+def start_pinecone():
+      pinecone.init(
+          api_key=PINECONE_API_KEY,  # find at app.pinecone.io
+          environment=PINECONE_API_ENV  # next to api key in console)
+
+          
 # get secret vars
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 pinecone_api_key = st.secrets["pinecone_api_key"]
