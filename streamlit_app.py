@@ -28,7 +28,6 @@ openai.api_key = st.secrets["OPENAI_API_KEY"]
 pinecone_api_key = st.secrets["pinecone_api_key"]
 my_environ = st.secrets["my_environ"]
 # set embedding model 
-embed_model = "text-embedding-ada-002"
 index_name = st.secrets["index_name"]
 
 
@@ -50,7 +49,7 @@ def generate_response(prompt):
 def retrieve_base(query):
       res = openai.Embedding.create(
             input = [query],
-            embed = embed_model
+            embed = "text-embedding-ada-002"
       )
 
       xq = res['data'][0]['embedding']
