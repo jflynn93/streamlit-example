@@ -124,7 +124,7 @@ if st.session_state.generated:
                   st.write(st.session_state['past'][i],is_user=True,key=str(i)+'_user')
 
             container = st.container()
-            col1, col2 = container = columns([4,20])
+            col1, col2 = container.columns([4,20])
             with col1:
                   col1.image(Image.open('weed.png').resize((40,40)) )
             with col2:
