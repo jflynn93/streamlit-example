@@ -14,10 +14,10 @@ if 'user_input' not in st.session_state:
       st.session_state['user_input'] = ''
 
 if 'generated' not in st.session_state:
-      st.session_state['generated'] = ''
+      st.session_state['generated'] = []
       
 if 'past' not in st.session_state:
-      st.session_state['past'] = ''
+      st.session_state['past'] = []
       
 if 'query' not in st.session_state:
       st.session_state['query'] = ''
