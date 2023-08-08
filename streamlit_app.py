@@ -60,7 +60,7 @@ def retrieve_base(query):
       ]
 
       prompt_start = (
-            "Answer the question based on the context below.\n\n"+
+            "Answer the question based on the context below. Act as a very knowledgeable, friendly, stoner.\n\n"+
             "Context:\n"
       )
       prompt_end = (
