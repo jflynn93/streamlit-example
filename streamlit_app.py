@@ -121,14 +121,14 @@ if st.session_state.generated:
             container = st.container()
             col1, col2 = container.columns([4,20])
             with col1:
-                  col1.image(Image.open('budde.png').resize((50,29)) )
+                  col1.image(Image.open('face.png').resize((50,29)) )
             with col2:
                   st.write(st.session_state['past'][i],is_user=True,key=str(i)+'_user')
 
             container = st.container()
             col1, col2 = container = columns([4,20])
             with col1:
-                  col1.image(Image.open('robot2.png').resize((40,40)) )
+                  col1.image(Image.open('weed.png').resize((40,40)) )
             with col2:
                   st.write(st.session_state["generated"][i],key=str(i))
 
