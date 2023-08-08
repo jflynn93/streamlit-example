@@ -23,6 +23,17 @@ if 'query' not in st.session_state:
       st.session_state['query'] = ''
       
 
+# get secret vars
+openai.api_key = st.secrets["OPENAI_API_KEY"]
+pinecone_api_key = st.secrets["pinecone_api_key"]
+my_environ = st.secrets["my_environ"]
+# set embedding model 
+embed_model = "text-embedding-ada-002"
+index_name = st.secrets["index_name"]
+
+
+
+
 def generate_response(prompt):
       completion = openai.Completion.create(
             engine = 'text-davinci-003',
@@ -72,17 +83,6 @@ def retrieve_base(query):
                         prompt_end
                   )
       return prompt 
-
-
-
-# get secret vars
-openai.api_key = st.secrets["OPENAI_API_KEY"]
-pinecone_api_key = st.secrets["pinecone_api_key"]
-my_environ = st.secrets["my_environ"]
-# set embedding model 
-embed_model = "text-embedding-ada-002"
-index_name = st.secrets["index_name"]
-
 
 
 @st.cache_resource
