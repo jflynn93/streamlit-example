@@ -49,7 +49,7 @@ def generate_response(prompt):
 def retrieve_base(query):
       res = openai.Embedding.create(
             input = [query],
-            embed = "text-embedding-ada-002"
+            model = "text-embedding-ada-002"
       )
 
       xq = res['data'][0]['embedding']
