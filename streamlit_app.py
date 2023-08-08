@@ -84,13 +84,12 @@ def retrieve_base(query):
       return prompt 
 
 
-@st.cache_resource
-def start_pinecone():
+
       # initialize connection to pinecone 
-      pinecone.init(
-          api_key=pinecone_api_key,
-          environment=my_environ # may be different, check at app.pinecone.io
-      )
+pinecone.init(
+      api_key=pinecone_api_key,
+      environment=my_environ # may be different, check at app.pinecone
+)
       
 
 #  Send to pinecone 
