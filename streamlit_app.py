@@ -59,7 +59,7 @@ def retrieve_base(query):
             x['metadata']['text'] for x in res['matches']
       ]
 
-      promt_start = (
+      prompt_start = (
             "Answer the question based on the context below.\n\n"+
             "Context:\n"
       )
