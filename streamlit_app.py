@@ -36,7 +36,7 @@ def generate_response(prompt):
       return message
 
 
-def retrieve_base(query)
+def retrieve_base(query):
       res = openai.Embedding.create(
             input = [query],
             embed = embed_model
