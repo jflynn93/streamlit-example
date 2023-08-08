@@ -67,18 +67,18 @@ def retrieve_base(query):
             f"\n\nQuestion: {query}\nAnswer:"
       )
 
-      for i in range(0,len(contexts)):
-            if len("\n\n---\n\n".join(contexts[:i])) >= 3750:
+      for i in range(0,len(context)):
+            if len("\n\n---\n\n".join(context[:i])) >= 3750:
                   prompt = (
                         prompt_start + 
-                        "\n\n---\n\n".join(contexts[:i-1])+
+                        "\n\n---\n\n".join(context[:i-1])+
                         prompt_end
                   )
                   break
-            elif i == len(contexts)-1:
+            elif i == len(context)-1:
                   prompt = (
                         prompt_start + 
-                        "\n\n---\n\n".join(contexts)+
+                        "\n\n---\n\n".join(context)+
                         prompt_end
                   )
       return prompt 
